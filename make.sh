@@ -1,0 +1,3 @@
+#!/bin/sh
+
+g++ -g -std=c++0x -I./ -I ~/OCE7.0/include/opencascade/ -L ~/OCE7.0/lib/ -o make_blade make_blade.cpp -lTKernel -lTKMath -lTKG2d -lTKG3d -lTKGeomBase -lTKBRep -lTKGeomAlgo -lTKTopAlgo -lTKPrim -lTKBO -lTKShHealing -lTKBool -lTKHLR -lTKFillet -lTKOffset -lTKFeat -lTKMesh -lTKXMesh -lTKService -lTKV3d -lTKOpenGl -lTKMeshVS -lTKCDF -lTKLCAF -lTKCAF -lTKBinL -lTKXmlL -lTKBin -lTKXml -lTKStdL -lTKStd -lFWOSPlugin -lTKTObj -lTKBinTObj -lTKXmlTObj -lTKVCAF -lTKXSBase -lTKSTEPBase -lTKSTEPAttr -lTKSTEP209 -lTKSTEP -lTKIGES -lTKXCAF -lTKXDEIGES -lTKXDESTEP -lTKSTL -lTKVRML -lTKXmlXCAF -lTKBinXCAF
