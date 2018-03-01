@@ -1,6 +1,7 @@
 BB3D
 ====
-Blade Builder 3D - 3-Dimensional Blade Surface CAD Generator
+Blade Builder 3D - 3-Dimensional Blade Surface CAD Generator  
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1186451.svg)](http://dx.doi.org/10.5281/zenodo.1186451)
 
 BB3D is a utility to generate a surface model of a blade based on a table of cross-sectional airfoil data. The code is built on the OpenCascade CAD package. The surface model is exported as an IGES file.
 
