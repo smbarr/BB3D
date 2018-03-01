@@ -13,7 +13,7 @@ Quick start
 
 data.dat
 --------
-The data.dat file contains the airfoil cross-section and spar location information needed to build the blade. Sample data.dat and corresponding airfoil cross-section files defining the NREL 5-MW blade are included in the BB3d/data/ directory.
+The data.dat file contains the airfoil cross-section and spar location information needed to build the blade. Sample data.dat and corresponding airfoil cross-section files defining the NREL 5-MW blade [1] are included in the BB3d/data/ directory.
 
 The first three lines specify the number of blade sections along the span, the number of lofts to perform and the number of spars, respectively.  
 Next, for each span location, the span number and airfoil coordinate file name.  
@@ -22,3 +22,5 @@ Then the cross-section data is listed for each span section.
 Finally, after another header line, the span locations are listed on separate lines as a percentage of chord.
 
 The airfoil coordinate files contain the x and y coordinate data scaled between x=0.0 and x=1.0. The order of the file should be from leading edge->trailing edge for the top of the blade, and then trailing edge->leading edge for the bottom of the blade.
+
+1. J. Jonkman, S. Butterfield, W. Musial, and G. Scott. Definition of a 5-mw reference wind turbine for offshore system development. Technical Report NREL/TP-500-38060, National Renewable Energy Laboratory, 2009. 
