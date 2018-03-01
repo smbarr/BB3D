@@ -45,6 +45,10 @@ gp_Pnt rotate(gp_Pnt, double, double, double, double, bool);
 int main(int argc, char **argv) {
 
   ifstream in("data.dat");
+  if(!in.good()) {
+    printf("Could not find 'data.dat'. Exiting.\n");
+    exit(1);
+  }
   std::string line;
   int station_number, nlofts=0, loft_num, nsections=0, nspars;
   double *aero_cent, *aero_orig, *twist, *chord, *z_station, dr, *spars;
