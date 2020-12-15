@@ -173,6 +173,30 @@ int main(int argc, char **argv) {
     GeomAPI_PointsToBSpline interp_bot(bot, 3, 3);
     Handle(Geom_BSplineCurve) top_curve = interp_top.Curve();
     Handle(Geom_BSplineCurve) bot_curve = interp_bot.Curve();
+    // Get the tangent direction from the top and bottom curves
+    gp_Pnt p1, p2;
+    gp_Vec v1, v2;
+    top_curve->D1(top_curve->LastParameter(), p1, v1);
+    bot_curve->D1(bot_curve->FirstParameter(), p2, v2);
+    gp_Vec avg_vec(0.5*(v1.X()+v2.X()),
+                   0.5*(v1.Y()+v2.Y()),
+                   0.5*(v1.Z()+v2.Z()));
+    Standard_Real avg_mag = avg_vec.Magnitude();
+    avg_vec.SetX(avg_vec.X()/avg_mag);
+    avg_vec.SetY(avg_vec.Y()/avg_mag);
+    avg_vec.SetZ(avg_vec.Z()/avg_mag);
+    // Get the position of the second control point away from the leading edge on the top and bottom curves
+    gp_Pnt le_pole = top_curve->Pole(top_curve->NbPoles());
+    gp_Pnt le_pole_top = top_curve->Pole(top_curve->NbPoles()-1);
+    gp_Pnt le_pole_bot = bot_curve->Pole(2);
+    // Modify the control point to make sure the tangency is equal
+    double mag_top = sqrt(pow(le_pole_top.X()-le_pole.X(),2)+
+                          pow(le_pole_top.Y()-le_pole.Y(),2));
+    double mag_bot = sqrt(pow(le_pole_bot.X()-le_pole.X(),2)+
+                          pow(le_pole_bot.Y()-le_pole.Y(),2));
+    top_curve->SetPole(top_curve->NbPoles()-1, gp_Pnt(le_pole.X()-avg_vec.X()*mag_top,le_pole.Y()-avg_vec.Y()*mag_top, le_pole.Z()));
+    bot_curve->SetPole(2, gp_Pnt(le_pole.X()+avg_vec.X()*mag_bot,le_pole.Y()+avg_vec.Y()*mag_bot, le_pole.Z()));
+    
     top_curves.SetValue(station_number-1, top_curve);
     bot_curves.SetValue(station_number-1, bot_curve);
 
